@@ -3,16 +3,20 @@ import java.io.*;
 public class FileWrite {
 
     public void writeStringToFile (String str) throws IOException {
-        FileWriter fw = new FileWriter("filetest.txt");
-        fw.write(str);
-        fw.close();
+        PrintWriter pw = new PrintWriter("fileTest.txt");
+        for(char c: str)
+            pw.print(c);
+        pw.close();
     }
 
     public String writeFileToString (String fileName) throws IOException {
-        String ret = "";
-        Scanner s = new Scanner(fileName);
-        ret = Scanner.nextLine();
-        return ret;
+        StringBuilder ret = new StringBuilder();
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        while(br.ready()) {
+            ret.append((char) br.read());
+        }
+        br.close();
+        return ret.toString();
     }
     
 }
