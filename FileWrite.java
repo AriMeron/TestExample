@@ -4,8 +4,8 @@ public class FileWrite {
 
     public void writeStringToFile (String str) throws IOException {
         PrintWriter pw = new PrintWriter("fileTest.txt");
-        for(char c: str)
-            pw.print(c);
+        for(int i = 0; i < str.length(); i++)
+            pw.print(str.charAt(i));
         pw.close();
     }
 
